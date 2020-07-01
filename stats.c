@@ -9,13 +9,15 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c 
+ * @brief Prints the statistics and the sorted array of unsigned char data items
  *
- * <Add Extended Description Here>
+ * This c program performs analytics on an array containing unsigned char data items.
+ * The analysis include finding the median, mean, maximum and minimum from the array and
+ * then printing the statistics and sorted array from largest to smallest on the console.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Rachit Jain
+ * @date 29/06/2020
  *
  */
 
@@ -26,6 +28,14 @@
 
 /* Size of the Data Set */
 #define SIZE (40)
+
+void print_statistics(int, int, int, int);
+void print_array(unsigned char [], int);
+int find_median(unsigned char [], int);
+int find_mean(unsigned char [], int);
+int find_maximum(unsigned char [], int);
+int find_minimum(unsigned char [], int);
+void sort_array(unsigned char [], int);
 
 void main() {
 
