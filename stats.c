@@ -45,9 +45,80 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
+  /* Other Variable Declarations */
+  int max, min, mean, median;
+  
+  /* Statistics and Printing Functions */
+  sort_array(test, SIZE);
+  max = find_maximum(test, SIZE);
+  min = find_minimum(test, SIZE);
+  mean = find_mean(test, SIZE);
+  median = find_median(test, SIZE);
+  print_statistics(max, min, mean, median);
+  print_array(test, SIZE);
 
 }
 
-/* Add other Implementation File Code Here */
+/* Implementation File Code */
+void sort_array(unsigned char array[], int len) {
+    
+  int a, i, j, t = 0;
+  for(i = 0; i < len; i++) {
+    for(j = i + 1; j < len; j++) {
+        if (array[i] < array[j]) {
+            a = array[i];
+            array[i] = array[j];
+            array[j] = a;
+            t++;
+        }
+    if (t == 0) {
+        break;
+    }
+    }
+  }
+}
+
+int find_maximum(unsigned char array[], int len) {
+    
+  return array[0];
+}
+
+int find_minimum(unsigned char array[], int len) {
+    
+  return array[len - 1];
+}
+
+int find_mean(unsigned char array[], int len) {
+    
+  int sum = 0, i;
+  for(i = 0; i < len; i++) {
+    sum += array[i];
+  }
+  return sum / len;
+}
+
+int find_median(unsigned char array[], int len) {
+
+  if(len % 2 == 0) {
+      return (array[len / 2] + array[(len / 2) + 1]) / 2;
+  }
+  else {
+      return array[(len / 2) + 1];
+  }
+}
+
+void print_statistics(int max, int min, int mean, int median) {
+  printf("Maximum: %d\n", max);
+  printf("Minimum: %d\n", min);
+  printf("Mean: %d\n", mean);
+  printf("Median: %d\n", median);
+}
+
+void print_array(unsigned char array[], int len) {
+    
+  int i;
+  printf("Sorted Array: ");
+  for(i = 0; i < len; i++) {
+    printf("%d ", array[i]);
+  }
+}
