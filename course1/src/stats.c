@@ -23,7 +23,7 @@
 
 
 
-#include <stdio.h>
+#include <stddef.h>
 #include "stats.h"
 #include "platform.h"
 

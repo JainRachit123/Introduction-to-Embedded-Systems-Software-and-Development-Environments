@@ -35,4 +35,4 @@ uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base);
  * @return integer data
  */
 
-int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base)
+int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base);

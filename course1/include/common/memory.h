@@ -19,6 +19,10 @@
  * @date April 1 2017
  *
  */
+
+#include <stdint.h>
+#include <stddef.h>
+#include <stdlib.h>
 #ifndef __MEMORY_H__
 #define __MEMORY_H__
 
@@ -117,7 +121,7 @@ uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
  *
  * @return unsigned pointer
  */
-uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length);
 
 /**
  * @brief Set the bytes at source to a specified value
@@ -181,7 +185,7 @@ int32_t * reserve_words(size_t length);
  *
  * @return void
  */
-void free_words(int32_t * src);
+void free_words(uint32_t * src);
 
 
 #endif /* __MEMORY_H__ */

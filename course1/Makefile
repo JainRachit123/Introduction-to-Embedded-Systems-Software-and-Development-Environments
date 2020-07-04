@@ -61,7 +61,7 @@ endif
 
 TARGET = final
 
-CFLAGS = -Wall -Werror $(VER) -O0 -std=c99 $(INCLUDEHEADERS) -D$(PLATFORM) $(ARMFLAGS) -D$(VERBOSE) -D$(COURSE1)
+CFLAGS = -Wall -Werror $(VER) -O0 -std=c99 $(INCLUDEHEADER) -D$(PLATFORM) $(ARMFLAGS) -D$(VERBOSE) -D$(COURSE1)
 CPPFLAGS = -E
 MAIN = main
 
@@ -73,19 +73,19 @@ DEPS = $(SOURCES:.c=.d)
 FILES = *.asm *.i *.o *.d
 	
 %.o : %.c
-	$(CC) $(INCLUDES) -c $< $(CFLAGS) -o $@
+	$(CC) -c $< $(CFLAGS) -o $@
 
-%.i : %.c
-	$(CC) $(INCLUDES) $(CPPFLAGS) $< $(CFLAGS) -o $@
+#%.i : %.c
+#	$(CC) $(INCLUDES) $(CPPFLAGS) $< $(CFLAGS) -o $@
 
-%.asm : %.c
-	$(CC) $(INCLUDES) -S $< $(CFLAGS) -o $@
+#%.asm : %.c
+#	$(CC) $(INCLUDES) -S $< $(CFLAGS) -o $@
 
-$(TARGET).asm : $(TARGET).out
-	$(OBJDUMP) -d $(TARGET).out >> $@
+#$(TARGET).asm : $(TARGET).out
+#	$(OBJDUMP) -d $(TARGET).out >> $@
 
-%.d : %.c
-	$(CC) $(INCLUDES) -M $< $(CFLAGS) -o $@
+#%.d : %.c
+#	$(CC) $(INCLUDES) -M $< $(CFLAGS) -o $@
 
 .PHONY: compile-all
 compile-all: $(OBJS)
@@ -100,4 +100,4 @@ $(TARGET).out: $(OBJS)
 
 .PHONY: clean
 clean:
-	del -f $(TARGET).asm $(TARGET).out $().map $(DEPS) $(OBJS)
+	rm -f $(TARGET).asm $(TARGET).out $().map $(DEPS) $(OBJS)

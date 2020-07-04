@@ -51,7 +51,8 @@ void clear_all(char * ptr, unsigned int size){
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length) {
 
   int i = 0;
-  uint8_t t = (uint8_t*)reserve_words(length);	// Creating a temperory location
+  uint8_t *t;
+  t = (uint8_t*)reserve_words(length);	// Creating a temperory location
 
   for(i = 0; i < length; i++) {
     *(t + i) = *(src + i);	// copying data to temp location from source
@@ -61,7 +62,7 @@ uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length) {
     *(dst + i) = *(t + i);	// copying data from temp location to destination
   }
 
-  free_words(t);
+  free_words((uint32_t*)t);
   return dst;
 
 }
@@ -119,7 +120,7 @@ int32_t * reserve_words(size_t length) {
 
 }
 
-void free_words(int32_t * src) {
+void free_words(uint32_t * src) {
 
   free(src);
 
