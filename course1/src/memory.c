@@ -48,3 +48,79 @@ void clear_all(char * ptr, unsigned int size){
   set_all(ptr, 0, size);
 }
 
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length) {
+
+  int i = 0;
+  uint8_t t = (uint8_t*)reserve_words(length);	// Creating a temperory location
+
+  for(i = 0; i < length; i++) {
+    *(t + i) = *(src + i);	// copying data to temp location from source
+  }
+
+  for(i = 0; i < length; i++) {
+    *(dst + i) = *(t + i);	// copying data from temp location to destination
+  }
+
+  free_words(t);
+  return dst;
+
+}
+
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length) {
+
+  int i = 0;
+  for(i = 0; i < length; i++) {
+    *(dst + i) = *(src + i);	// copying data from source to destination
+  }
+
+  return dst;
+
+}
+
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value) {
+
+  int i = 0;
+  for(i = 0; i < length; i++) {
+    *(src + i) = value;		// setting value
+  }
+
+  return src;
+
+}
+
+uint8_t * my_memzero(uint8_t * src, size_t length) {
+  int i = 0;
+  for(i = 0; i < length; i++) {
+    *(src + i) = 0;		// setting all value to zero
+  }
+
+  return src;
+
+}
+
+uint8_t * my_reverse(uint8_t * src, size_t length) {
+  
+  int i;
+  uint8_t t;
+  for(i = 0; i < length / 2; i++) {
+    t = *(src + i);	// storing the value in sorce to a variable
+    *(src + i) = *(src + length - i - 1); // interchanging the position in source
+    *(src + length - i - 1) = t;	// copying the value in t variable to source
+  }
+
+  return src;
+
+}
+
+int32_t * reserve_words(size_t length) {
+
+  int32_t *loc = (int32_t*)malloc(length * sizeof(int32_t));
+  return loc;
+
+}
+
+void free_words(int32_t * src) {
+
+  free(src);
+
+}

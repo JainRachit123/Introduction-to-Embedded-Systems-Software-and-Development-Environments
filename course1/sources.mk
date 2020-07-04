@@ -12,12 +12,19 @@
 ifeq ($(PLATFORM),MSP432)
 	SOURCES =          main.c \
 			   memory.c \
+			   data.c \
+			   stats.c \
+			   course1.c \
 			   interrupts_msp432p401r_gcc.c \
 			   startup_msp432p401r_gcc.c \
 			   system_msp432p401r.c
 else
 	SOURCES = main.c \
-		  memory.c 
+		  memory.c \
+		  data.c \
+		  stats.c \
+		  course1.c
+
 
 	endif
 
@@ -27,8 +34,10 @@ ifeq ($(PLATFORM),MSP432)
 	INCLUDES = 	   -I../include/CMSIS \
 			   -I../include/common \
 			   -I../include/msp432 \
-			   -I../ 
 else
-	INCLUDES =         -I../include/common	
+	INCLUDESRC =         -I../src
+
+	INCLUDEHEADER = -I./include/common \
+			-I./	
 
 endif

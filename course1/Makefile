@@ -53,9 +53,15 @@ else
 
 endif
 
-TARGET = c1m2
+VPATH = ./src
 
-CFLAGS = -Wall -Werror -g -O0 -std=c99 -D$(PLATFORM) $(ARMFLAGS)
+ifeq ($(VERBOSE),VERBOSE)
+		VER = -g
+endif
+
+TARGET = final
+
+CFLAGS = -Wall -Werror $(VER) -O0 -std=c99 $(INCLUDEHEADERS) -D$(PLATFORM) $(ARMFLAGS) -D$(VERBOSE) -D$(COURSE1)
 CPPFLAGS = -E
 MAIN = main
 
@@ -86,13 +92,11 @@ compile-all: $(OBJS)
 	$(CC) $(INCLUDES) $(OBJS) -c $(CFLAGS) -o $(TARGET).o
 
 .PHONY: build
-build: $(TARGET).out  $(TARGET).asm
+build: $(TARGET).out
 
 
-$(TARGET).out: $(OBJS) $(DEPS) 
+$(TARGET).out: $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -o $@ $(OBJS)
-	$(SIZE) -Atd $(TARGET).out
-	$(SIZE) $(TARGET).out
 
 .PHONY: clean
 clean:

@@ -90,4 +90,98 @@ void set_all(char * ptr, char value, unsigned int size);
  */
 void clear_all(char * ptr, unsigned int size);
 
+/**
+ * @brief Move content from source to destination
+ *
+ * This function takes two pointer both pointing to source and destination and
+ * a length of bytes to move and move the data from source to destination without
+ * any data corruption.
+ *
+ * @param src Pointer to source
+ * @param dst Pointer to destination
+ * @param length Length of Bytes
+ *
+ * @return unsigned pointer
+ */
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Copies content from source to destination
+ *
+ * This function takes two pointer both pointing to source and destination and
+ * a length of bytes to move and copies the content from source to destination.
+ *
+ * @param src Pointer to source
+ * @param dst Pointer to destination
+ * @param length Length of Bytes
+ *
+ * @return unsigned pointer
+ */
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Set the bytes at source to a specified value
+ *
+ * This function takes a pointer to source, length of bytes to set and set the 
+ * bytes with a specific value provided in function.
+ *
+ * @param src Pointer to source
+ * @param length Length of Bytes
+ * @param value Value to set
+ *
+ * @return unsigned pointer
+ */
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value);
+
+/**
+ * @brief Sets the bytes at source to zero
+ *
+ * This function takes a pointer to source, length of bytes to set and set the 
+ * bytes with zero value.
+ *
+ * @param src Pointer to source
+ * @param length Length of Bytes
+ *
+ * @return unsigned pointer
+ */
+uint8_t * my_memzero(uint8_t * src, size_t length);
+
+/**
+ * @brief Reverse the order of bytes at memory location
+ *
+ * This function takes a pointer to source and length of bytes to set and reverse the 
+ * order of all bytes at that pointing memory location.
+ *
+ * @param src Pointer to source
+ * @param length Length of Bytes
+ *
+ * @return unsigned pointer
+ */
+uint8_t * my_reverse(uint8_t * src, size_t length);
+
+/**
+ * @brief Allocate the number of words in dynamic memory
+ *
+ * This function takes a length of words which needs to be allocated 
+ * in dynamic memory.
+ *
+ * @param length Length of Bytes
+ *
+ * @return integer pointer
+ */
+int32_t * reserve_words(size_t length);
+
+/**
+ * @brief Free a dynamic memory allocation
+ *
+ * This function takes a pointer to source and free up the dynamic 
+ * memory allocation
+ *
+ * @param src Pointer to source
+ *
+ * @return void
+ */
+void free_words(int32_t * src);
+
+
 #endif /* __MEMORY_H__ */
